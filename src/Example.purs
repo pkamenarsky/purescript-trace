@@ -11,7 +11,11 @@ import Trace as Trace
 f :: Int -> Int -> Maybe Int -> Int
 f = Trace.trace "f" \a b c -> a + b
 
+v :: Int
+v = Trace.trace "v" 9
+
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
   let g = f 8
   log $ show $ g 3 Nothing
+  log $ show v

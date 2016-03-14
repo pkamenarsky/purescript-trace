@@ -2,15 +2,14 @@
 
 // module Trace
 
-var _intersperse = function(a, x) {
+var _zip_const = function(a, x) {
   var b = [];
 
-  for (var i = 0; i < a.length - 1; i++) {
+  for (var i = 0; i < a.length; i++) {
     b.push(a[i]);
     b.push(x);
   }
 
-  b.push(a[a.length - 1]);
   return b;
 }
 
@@ -23,7 +22,7 @@ var _trace = function(f, str, traced_args) {
   }
   else {
     console.log.apply(this,
-      [ str, "::" ].concat(_intersperse(traced_args, "->")).concat(["->", f]));
+      [ str, "::" ].concat(_zip_const(traced_args, "->")).concat([f]));
     return f;
   }
 }
