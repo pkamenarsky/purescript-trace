@@ -1,4 +1,4 @@
-module Main where
+module Trace.Example where
 
 import Prelude
 import Control.Monad.Eff (Eff)
