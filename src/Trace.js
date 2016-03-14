@@ -14,7 +14,13 @@ var _zip_const = function(a, x) {
 }
 
 var _get_name = function(o) {
-  if (o.constructor.name)
+  if (typeof(o) === 'number')
+    return o.toString();
+  else if (typeof(o) === 'string')
+    return o.toString();
+  else if (typeof(o) === 'boolean')
+    return o.toString();
+  else if (o.constructor.name)
     return o.constructor.name;
   else
     return o.toString();
@@ -28,7 +34,7 @@ var _trace = function(f, color, str, traced_args) {
     };
   }
   else {
-    console.groupCollapsed.call(console, "%c %s :: %s ➜ %s", 'color: '  + color, str, traced_args.map(_get_name).join(" ➜ "), f);
+    console.groupCollapsed.call(console, "%c %s :: %s ➜ %s", 'color: '  + color, str, traced_args.map(_get_name).join(" ➜ "), _get_name(f));
 
     for (var i = 0; i < traced_args.length; i++)
       console.log(traced_args[i]);
